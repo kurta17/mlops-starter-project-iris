@@ -4,6 +4,8 @@
 # models/*
 # !models/.gitignore
 
+mlruns
+
 ## Mac OS
 .DS_Store
 

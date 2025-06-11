@@ -1,5 +1,6 @@
 {
   "f1_score": 0.9305555555555555,
+  "accuracy": 0.9333333333333333,
   "confusion_matrix": {
     "classes": [
       0,
