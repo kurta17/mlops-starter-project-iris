@@ -40,11 +40,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Download & preprocess data
-      run: source .venv/bin/activate && make run-pipeline
+    - name: Install dependencies
+      run: make install
 
-    - name: Run training script
-      run: make train
+    - name: Download & preprocess data
+      run: |
+        source .venv/bin/activate
+        python src/load_data.py
+        python src/split_dataset.py --test_size 0.2
+        python src/train.py
 
     - name: Upload model artifact
       uses: actions/upload-artifact@v4
