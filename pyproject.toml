@@ -7,7 +7,7 @@ requires-python = ">=3.11.6"
 
 # Core dependencies needed to run the project
 dependencies = [
-
+    "mlflow==2.22.1",
     "dvc>=3.59.2",
     "joblib>=1.5.1",
     "pandas>=2.2.3",
