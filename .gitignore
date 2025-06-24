@@ -1,5 +1,7 @@
 # Data files
-data/*
+data/test.csv
+data/train.csv
+
 !data/.gitignore
 models/*
 !models/.gitignore
