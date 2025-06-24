@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Download & preprocess data
       run: source .venv/bin/activate && make run-pipeline
 
