@@ -60,3 +60,42 @@ jobs:
       with:
         name: iris-model
         path: models/model.joblib
+
+  evaluate-model:
+    needs: train-model
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+
+    - name: Install dependencies
+      run: make install
+
+    - name: Download iris-model artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: iris-model
+        path: models/
+
+    - name: Verify model artifact
+      run: |
+        if [ ! -f models/model.joblib ]; then
+          echo "Model artifact not found!" >&2
+          exit 1
+        fi
+
+    - name: Run evaluation script
+      run: |
+        source .venv/bin/activate
+        python src/evaluate.py
+
+    - name: Upload evaluation metrics
+      uses: actions/upload-artifact@v4
+      with:
+        name: evaluation-metrics
+        path: data/eval.json
