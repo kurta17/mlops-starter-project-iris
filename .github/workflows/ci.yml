@@ -40,9 +40,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Install dependencies
-      run: make install
-
     - name: Download & preprocess data
       run: source .venv/bin/activate && make run-pipeline
 
