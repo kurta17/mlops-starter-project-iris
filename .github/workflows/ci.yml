@@ -40,6 +40,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set up Python virtual environment
+      run: python -m venv .venv
+    
+    - name: Install dependencies
+      run: make install
+
     - name: Download & preprocess data
       run: source .venv/bin/activate && make run-pipeline
 
